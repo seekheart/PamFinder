@@ -1,6 +1,2 @@
-# methods_two_project
+# Crispr Cas9 PAM Finder
 
-# TESTING ! 2 3!!!!
-
-
-# LUKE I AM YOUR FATHER!
