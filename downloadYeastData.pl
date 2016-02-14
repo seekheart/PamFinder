@@ -10,14 +10,14 @@ use feature qw(say);
 
 #Make the options
 my $infile;
-my $out;
+my $outfile;
 my $email;
 my $usage = "\n$0\n
 
 Usage:
 -infile           Input File with Genbank/RefSeq Ids
 -email            Your Email
--out                Output Base File Name
+-outfile          Output Base File Name
 -verbose          Display output, off by default
 -help             Display This
 
@@ -26,12 +26,12 @@ Usage:
 GetOptions(
                     "infile=s"          =>          \$infile,
                     "email=s"         =>           \$email,
-                    "out=s"             =>           \$out,
+                    "outfile=s"             =>           \$outfile,
                       help                =>          sub{pod2usage($usage);},
                     );
 
 #check required options are met
-unless($infile && $email && $out){
+unless($infile && $email && $outfile){
     die "$usage";
 }
 
@@ -67,7 +67,7 @@ foreach my $id (@ids){
                                                                     -tool      =>   'get_refseq_id'
                                                                     );
     #output file to directory
-    my $file = $dirName . '/' . $out . '.' . $id . '.fasta';
+    my $file = $dirName . '/' . $outfile . '.' . $id . '.fasta';
     if (-s $file){
         say STDERR "File Exists Skipping...";
     }
