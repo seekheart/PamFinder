@@ -63,17 +63,17 @@ sub main{
 			"C"	=>	"C",
 			"G"	=>	"G",
 			"T"	=>	"T",
-			"R"	=>	"[A|G]",
-			"Y"	=>	"[C|T]",
-			"S"	=>	"[C|G]",
-			"W"	=>	"[A|T]",
-			"K"	=>	"[G|T]",
-			"M"	=>	"[A|C]",
-			"B"	=>	"[C|G|T]",
-			"D"	=>	"[A|G|T]",
-			"H"	=>	"[A|C|T]",
-			"V"	=>	"[A|C|G]",
-			"N"	=>	"[A|G|C|T]",
+			"R"	=>	"[AG]",
+			"Y"	=>	"[CT]",
+			"S"	=>	"[CG]",
+			"W"	=>	"[AT]",
+			"K"	=>	"[GT]",
+			"M"	=>	"[AC]",
+			"B"	=>	"[CGT]",
+			"D"	=>	"[AGT]",
+			"H"	=>	"[ACT]",
+			"V"	=>	"[ACG]",
+			"N"	=>	"[AGCT]",
 		   );
 	say $cas9{$cas9};
 
@@ -81,9 +81,10 @@ sub main{
 
 
 ###TODO###
-# [X] Start
-# [X] Hashtable of {Cas9 Strain : PAM}
-# [X] IUPAC CODE {S: REGEX PATTERN ([GC])}
+# Test sGRNA FILE
+# Check Fasta sequence for location of Crispr/Cas9
+# Function to do reverse complement seq
+# Function to look for hybrid sites of guides and check PAM
 
 #run
 main();
