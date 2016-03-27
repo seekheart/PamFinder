@@ -21,62 +21,61 @@ Options     Description
 ";
 
 GetOptions(
-                    "fasta=s"       =>       \$fastaFile,
-                    "cas9=s"         =>      \$cas9,
-                    "guide=s"      =>        \$guideFile,
-                    "help"              =>      sub{pod2usage($usage);},
-    ) or die "$usage";
+		"fasta=s"       =>      \$fastaFile,
+		"cas9=s"         =>      \$cas9,
+		"guide=s"      =>      \$guideFile,
+		"help"              =>      sub{pod2usage($usage);},
+	  ) or die "$usage";
 
 unless($fastaFile and $cas9 and $guideFile){
-    die "Error!!\n$usage"
+	die "Error!!\n$usage"
 }
 
 #Subroutines
 sub processFasta{
-    my ($fasta) = @_;
-    my @sequence = ();
+	my ($fasta) = @_;
+	my @sequence = ();
 
-    #make bioseqIO object to house fasta then get_sequence()
-    my $seqIn = Bio::SeqIO->new(   -file => $fasta,
-                                                    -format => 'Fasta');
-    #process the seq object
-    while (my $seq = $seqIn->next_seq()){
-        @sequence = split("", $seq->seq()) ;
-    }
-    return @sequence;
+#make bioseqIO object to house fasta then get_sequence()
+	my $seqIn = Bio::SeqIO->new(   -file => $fasta,
+			-format => 'Fasta');
+#process the seq object
+	while (my $seq = $seqIn->next_seq()){
+		@sequence = split("", $seq->seq()) ;
+	}
+	return @sequence;
 }
 
 sub main{
-    my @sequence = processFasta($fastaFile);
-    my %cas9 = (
-       "SP"                   =>   ("NGG"),
-       "SP D1135E"       =>   ("NGG", "NAG"),
-       "SP VRER"          =>   ("NGCG"),
-       "SP EQR"            =>   ("NGAG"),
-       "SP VQR"            =>   ("NGAN", "NGNG"),
-       "SA"                   =>   ("NNGRRT", "NNGRR", "NNGRRN"),
-       "NM"                  =>   ("NNNNGATT"),
-       "ST"                   =>   ("NNAGAAW"),
-       "TD"                   =>   ("NAAAAC"),
-                        );
-    my %code = (
-                            "A"         =>          "A",
-                            "C"         =>          "C",
-                            "G"         =>          "G",
-                            "T"         =>          "T",
-                            "R"         =>          "[A|G]",
-                            "Y"         =>          "[C|T]",
-                            "S"         =>          "[C|G]",
-                            "W"         =>          "[A|T]",
-                            "K"         =>          "[G|T]",
-                            "M"         =>          "[A|C]",
-                            "B"         =>          "[C|G|T]",
-                            "D"         =>          "[A|G|T]",
-                            "H"         =>          "[A|C|T]",
-                            "V"         =>          "[A|C|G]",
-                            "N"         =>          "[A|G|C|T]",
-                        );
-    say $cas9{$cas9};
+	my @sequence = processFasta($fastaFile);
+	my %cas9 = (    "SP"		=> ("NGG"),
+			"SP D1135E"	=> ("NGG", "NAG"),
+			"SP VRER"	=> ("NGCG"),
+			"SP EQR"	=> ("NGAG"),
+			"SP VQR"	=> ("NGAN", "NGNG"),
+			"SA"		=> ("NNGRRT", "NNGRR", "NNGRRN"),
+			"NM"		=> ("NNNNGATT"),
+			"ST"		=> ("NNAGAAW"),
+			"TD"		=> ("NAAAAC"),
+		   );
+	my %code = (
+			"A"	=>	"A",
+			"C"	=>	"C",
+			"G"	=>	"G",
+			"T"	=>	"T",
+			"R"	=>	"[A|G]",
+			"Y"	=>	"[C|T]",
+			"S"	=>	"[C|G]",
+			"W"	=>	"[A|T]",
+			"K"	=>	"[G|T]",
+			"M"	=>	"[A|C]",
+			"B"	=>	"[C|G|T]",
+			"D"	=>	"[A|G|T]",
+			"H"	=>	"[A|C|T]",
+			"V"	=>	"[A|C|G]",
+			"N"	=>	"[A|G|C|T]",
+		   );
+	say $cas9{$cas9};
 
 }
 
