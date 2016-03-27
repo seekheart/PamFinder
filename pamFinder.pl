@@ -21,9 +21,9 @@ Options     Description
 ";
 
 GetOptions(
-                    "fasta=s"       =>      \$fastaFile,
+                    "fasta=s"       =>       \$fastaFile,
                     "cas9=s"         =>      \$cas9,
-                    "guide=s"      =>      \$guideFile,
+                    "guide=s"      =>        \$guideFile,
                     "help"              =>      sub{pod2usage($usage);},
     ) or die "$usage";
 
@@ -48,15 +48,16 @@ sub processFasta{
 
 sub main{
     my @sequence = processFasta($fastaFile);
-    my %cas9 = (    "SP"                => ("NGG"),
-                             "SP D1135E"    => ("NGG", "NAG"),
-                             "SP VRER"        => ("NGCG"),
-                             "SP EQR"          => ("NGAG"),
-                             "SP VQR"          => ("NGAN", "NGNG"),
-                             "SA"                 => ("NNGRRT", "NNGRR", "NNGRRN"),
-                             "NM"                 => ("NNNNGATT"),
-                             "ST"                   => ("NNAGAAW"),
-                             "TD"                   => ("NAAAAC"),
+    my %cas9 = (
+       "SP"                   =>   ("NGG"),
+       "SP D1135E"       =>   ("NGG", "NAG"),
+       "SP VRER"          =>   ("NGCG"),
+       "SP EQR"            =>   ("NGAG"),
+       "SP VQR"            =>   ("NGAN", "NGNG"),
+       "SA"                   =>   ("NNGRRT", "NNGRR", "NNGRRN"),
+       "NM"                  =>   ("NNNNGATT"),
+       "ST"                   =>   ("NNAGAAW"),
+       "TD"                   =>   ("NAAAAC"),
                         );
     my %code = (
                             "A"         =>          "A",
