@@ -43,8 +43,6 @@ unless (-e $dirName){
     `mkdir -p $dirName`;
 }
 
-
-
 #Process and extract out the RefSEq IDs
 open(my $fh, '<', $infile) or die "Invalid File!";
 my @ids = ();
