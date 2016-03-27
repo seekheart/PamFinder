@@ -81,9 +81,8 @@ sub main{
 
 
 ###TODO###
-# [X] Start
-# [X] Hashtable of {Cas9 Strain : PAM}
-# [X] IUPAC CODE {S: REGEX PATTERN ([GC])}
+# Test sGRNA FILE
+# Check Fasta sequence for location of Crispr/Cas9
 
 #run
 main();
