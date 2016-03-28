@@ -51,7 +51,7 @@ sub reverseComplement{
 	my @sequence = split("", $seq);
 	my @newSeq = ();
 	foreach my $nucleotide (@sequence){
-		chomp;
+		chomp $nucleotide;
 		if ($nucleotide eq "A"){
 			push @newSeq, "T";
 		}
@@ -110,6 +110,19 @@ sub main{
 		chomp;
 		push @guides, $_;
 	}
+
+	#make an array of rev complemented guide RNAs
+	my @targets = ();
+	my $tmp;
+
+	foreach my $sgRNA (@guides){
+		chomp $sgRNA;
+		$tmp = join("", reverseComplement($sgRNA));
+		push @targets, $tmp;
+	}
+
+	# say join("\n", @guides); sanity check
+	# say join("\n",@targets); sanity check
 }
 
 
