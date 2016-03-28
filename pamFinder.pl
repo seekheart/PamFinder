@@ -21,10 +21,10 @@ Options     Description
 ";
 
 GetOptions(
-		"fasta=s"       =>      \$fastaFile,
-		"cas9=s"         =>      \$cas9,
-		"guide=s"      =>      \$guideFile,
-		"help"              =>      sub{pod2usage($usage);},
+	"fasta=s"       =>      \$fastaFile,
+	"cas9=s"        =>      \$cas9,
+	"guide=s"      =>      \$guideFile,
+	"help"              =>      sub{pod2usage($usage);},
 	  ) or die "$usage";
 
 unless($fastaFile and $cas9 and $guideFile){
@@ -46,8 +46,33 @@ sub processFasta{
 	return @sequence;
 }
 
+sub reverseComplement{
+	my ($seq) = @_;
+	my @sequence = split("", $seq);
+	my @newSeq = ();
+	foreach my $nucleotide (@sequence){
+		chomp;
+		if ($nucleotide eq "A"){
+			push @newSeq, "T";
+		}
+		elsif($nucleotide eq "T"){
+			push @newSeq, "A";
+		}
+		elsif($nucleotide eq "C"){
+			push @newSeq, "G";
+		}
+		else{
+			push @newSeq, "C";
+		}
+	}
+	return @newSeq;
+}
+
 sub main{
+	#load the sequence to be analyzed
 	my @sequence = processFasta($fastaFile);
+
+	#Hash of Cas9 Variants and their respective PAM Sites
 	my %cas9 = (    "SP"		=> ("NGG"),
 			"SP D1135E"	=> ("NGG", "NAG"),
 			"SP VRER"	=> ("NGCG"),
@@ -58,6 +83,8 @@ sub main{
 			"ST"		=> ("NNAGAAW"),
 			"TD"		=> ("NAAAAC"),
 		   );
+
+	#IUPAC Nucleotide Code
 	my %code = (
 			"A"	=>	"A",
 			"C"	=>	"C",
@@ -75,15 +102,19 @@ sub main{
 			"V"	=>	"[ACG]",
 			"N"	=>	"[AGCT]",
 		   );
-	say $cas9{$cas9};
 
+	#Process the sGRNA file in to array of guides
+	my @guides;
+	open(my $fh, "<", $guideFile) or die "Couldn't Open File!";
+	while (<$fh>) {
+		chomp;
+		push @guides, $_;
+	}
 }
 
 
 ###TODO###
-# Test sGRNA FILE
 # Check Fasta sequence for location of Crispr/Cas9
-# Function to do reverse complement seq
 # Function to look for hybrid sites of guides and check PAM
 
 #run
