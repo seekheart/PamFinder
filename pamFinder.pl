@@ -43,7 +43,8 @@ sub processFasta{
 	while (my $seq = $seqIn->next_seq()){
 		@sequence = split("", $seq->seq()) ;
 	}
-	return @sequence;
+	my $seq = join('', @sequence);
+	return $seq;
 }
 
 sub reverseComplement{
@@ -65,23 +66,24 @@ sub reverseComplement{
 			push @newSeq, "C";
 		}
 	}
+	@newSeq = reverse(@newSeq);
 	return @newSeq;
 }
 
 sub main{
 	#load the sequence to be analyzed
-	my @sequence = processFasta($fastaFile);
+	my $sequence = processFasta($fastaFile);
 
 	#Hash of Cas9 Variants and their respective PAM Sites
-	my %cas9 = (    "SP"		=> ("NGG"),
-			"SP D1135E"	=> ("NGG", "NAG"),
-			"SP VRER"	=> ("NGCG"),
-			"SP EQR"	=> ("NGAG"),
-			"SP VQR"	=> ("NGAN", "NGNG"),
-			"SA"		=> ("NNGRRT", "NNGRR", "NNGRRN"),
-			"NM"		=> ("NNNNGATT"),
-			"ST"		=> ("NNAGAAW"),
-			"TD"		=> ("NAAAAC"),
+	my %cas9 = (    "SP"		=> 	("NGG"),
+			"SP D1135E"	=> 	("NGG", "NAG"),
+			"SP VRER"	=> 	("NGCG"),
+			"SP EQR"	=> 	("NGAG"),
+			"SP VQR"	=> 	("NGAN", "NGNG"),
+			"SA"		=> 	("NNGRRT", "NNGRR", "NNGRRN"),
+			"NM"		=> 	("NNNNGATT"),
+			"ST"		=> 	("NNAGAAW"),
+			"TD"		=> 	("NAAAAC"),
 		   );
 
 	#IUPAC Nucleotide Code
@@ -108,21 +110,32 @@ sub main{
 	open(my $fh, "<", $guideFile) or die "Couldn't Open File!";
 	while (<$fh>) {
 		chomp;
-		push @guides, $_;
+		push @guides, join("", $_);
 	}
 
 	#make an array of rev complemented guide RNAs
 	my @targets = ();
 	my $tmp;
-
 	foreach my $sgRNA (@guides){
 		chomp $sgRNA;
 		$tmp = join("", reverseComplement($sgRNA));
 		push @targets, $tmp;
 	}
 
-	# say join("\n", @guides); sanity check
-	# say join("\n",@targets); sanity check
+	 # say join("\n", @guides); #sanity check
+	 # say join("\n",@targets); #sanity check
+
+	 #Check the fasta for possible hits (+ strand)
+	 my $pos = 0;
+
+	 foreach my $target (@targets){
+	 	$pos = 0;
+	 	 foreach (split /($target)/i  => $sequence){
+	 	 	say "Sequence Found at pos: $pos" if uc eq uc $sequence;
+	 	 	$pos += length;
+	 	 }}
+
+
 }
 
 
