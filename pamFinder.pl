@@ -1,5 +1,11 @@
 #!/usr/bin/perl
-#@AUTHORS - Mike Tung, Meryl Stav
+=head
+Authors - Mike Tung, Meryl Stav
+Pam Finder 1.00
+http://www.github.com/seekheart/PamFinder/
+=cut
+
+#load packages/libraries
 use warnings;
 use strict;
 use feature qw(say);
@@ -7,12 +13,11 @@ use Bio::SeqIO;
 use Getopt::Long;
 use Pod::Usage;
 
-
-#Make Options
+#Make command line options
 my $fastaFile;
 my $cas9;
 my $guideFile;
-my $usage = "\n$0\n
+my $usage = "\nPam Finder\n
 Options     Description
 -fasta      Fasta File to search
 -cas9       Specify Strain(s) Cas9 to Use
@@ -27,18 +32,22 @@ GetOptions(
 	"help"              =>      sub{pod2usage($usage);},
 	  ) or die "$usage";
 
+#check for required CL options
 unless($fastaFile and $cas9 and $guideFile){
 	die "Error!!\n$usage"
 }
 
-#Subroutines
+#Subroutines Here
 sub processFasta{
 	my ($fasta) = @_;
 	my @sequence = ();
 
 #make bioseqIO object to house fasta then get_sequence()
-	my $seqIn = Bio::SeqIO->new(   -file => $fasta,
-			-format => 'Fasta');
+	my $seqIn = Bio::SeqIO->new(
+					-file 	 	=> 	$fasta,
+					-format 	=> 	'Fasta',
+);
+
 #process the seq object
 	while (my $seq = $seqIn->next_seq()){
 		@sequence = split("", $seq->seq()) ;
@@ -70,6 +79,7 @@ sub reverseComplement{
 	return @newSeq;
 }
 
+#Main Subroutine executes entire script.
 sub main{
 	#load the sequence to be analyzed
 	my $sequence = processFasta($fastaFile);
@@ -125,17 +135,6 @@ sub main{
 	 # say join("\n", @guides); #sanity check
 	 # say join("\n",@targets); #sanity check
 
-	 #Check the fasta for possible hits (+ strand)
-	 my $pos = 0;
-
-	 foreach my $target (@targets){
-	 	$pos = 0;
-	 	 foreach (split /($target)/i  => $sequence){
-	 	 	say "Sequence Found at pos: $pos" if uc eq uc $sequence;
-	 	 	$pos += length;
-	 	 }}
-
-
 }
 
 
@@ -143,5 +142,5 @@ sub main{
 # Check Fasta sequence for location of Crispr/Cas9
 # Function to look for hybrid sites of guides and check PAM
 
-#run
+#Run program here through main sub
 main();
