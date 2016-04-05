@@ -106,12 +106,16 @@ sub main{
   	# and EQR var (NGAG)), NGNG (VQR var)
   	"SP"  =>   [
           "AGG", "CGG", "TGG", "GGG",
+          
           "AAG", "CAG", "TAG", "GAG",
+          
           "AGCG", "CGCG", "TGCG", "GGCG",
+          
           "AGAA", "CGAA", "TGAA", "GGAA",
           "AGAC", "CGAC", "TGAC", "GGAC",
           "AGAT", "CGAT", "TGAT", "GGAT",
           "AGAG", "CGAG", "TGAG", "GGAG",
+          
           "AGTG", "CGTG", "TGTG", "GGTG",
           "AGGG", "CGGG", "TGGG", "GGGG"
           ],
@@ -121,18 +125,22 @@ sub main{
   	      "ACGRR", "CCGRR", "TCGRR", "GCGRR",
   	      "ATGRR", "CTGRR", "TTGRR", "GTGRR",
   	      "AGGRR", "CGGRR", "TGGRR", "GGGRR",
+  	      
   	      "AAGRRA", "CAGRRA", "TAGRRA", "GAGRRA",
   	      "ACGRRA", "CCGRRA", "TCGRRA", "GCGRRA",
   	      "ATGRRA", "CTGRRA", "TTGRRA", "GTGRRA",
   	      "AGGRRA", "CGGRRA", "TGGRRA", "GGGRRA",
+  	      
   	      "AAGRRC", "CAGRRC", "TAGRRC", "GAGRRC",
   	      "ACGRRC", "CCGRRC", "TCGRRC", "GCGRRC",
   	      "ATGRRC", "CTGRRC", "TTGRRC", "GTGRRC",
   	      "AGGRRC", "CGGRRC", "TGGRRC", "GGGRRC",
+  	      
   	      "AAGRRT", "CAGRRT", "TAGRRT", "GAGRRT",
   	      "ACGRRT", "CCGRRT", "TCGRRT", "GCGRRT",
   	      "ATGRRT", "CTGRRT", "TTGRRT", "GTGRRT",
   	      "AGGRRT", "CGGRRT", "TGGRRT", "GGGRRT",
+  	      
   	      "AAGRRG", "CAGRRG", "TAGRRG", "GAGRRG",
   	      "ACGRRG", "CCGRRG", "TCGRRG", "GCGRRG",
   	      "ATGRRG", "CTGRRG", "TTGRRG", "GTGRRG",
@@ -140,70 +148,104 @@ sub main{
           ],
   	# Neisseria meningitidis (NM) => NNNNGATT
     "NM"  =>   [
-          "AAAAGATT", "GAAAGATT","CAAAGATT", "TAAAGATT",
-          "ACAAGATT", "GCAAGATT","CCAAGATT", "TCAAGATT",
-          "ATAAGATT", "GTAAGATT","CTAAGATT", "TTAAGATT",
-          "AGAAGATT", "GGAAGATT","CGAAGATT", "TGAAGATT",
-          "AACAGATT", "GACAGATT","CACAGATT", "TACAGATT",
-          "ACCAGATT", "GCCAGATT","CCCAGATT", "TCCAGATT",
-          "ATCAGATT", "GTCAGATT","CTCAGATT", "TTCAGATT",
-          "AGCAGATT", "GGCAGATT","CGCAGATT", "TGCAGATT",
-          "AATAGATT", "GATAGATT","CATAGATT", "TATAGATT",
-          "ACTAGATT", "GCTAGATT","CCTAGATT", "TCTAGATT",
-          "ATTAGATT", "GTTAGATT","CTTAGATT", "TTTAGATT",
-          "AGTAGATT", "GGTAGATT","CGTAGATT", "TGTAGATT",
-          "AAGAGATT", "GAGAGATT","CAGAGATT", "TAGAGATT",
-          "ACGAGATT", "GCGAGATT","CCGAGATT", "TCGAGATT",
-          "ATGAGATT", "GTGAGATT","CTGAGATT", "TTGAGATT",
-          "AGGAGATT", "GGGAGATT","CGGAGATT", "TGGAGATT",
-          "AAACGATT", "GAACGATT","CAACGATT", "TAACGATT",
-          "ACACGATT", "GCACGATT","CCACGATT", "TCACGATT",
-          "ATACGATT", "GTACGATT","CTACGATT", "TTACGATT",
-          "AGACGATT", "GGACGATT","CGACGATT", "TGACGATT",
-          "AACCGATT", "GACCGATT","CACCGATT", "TACCGATT",
-          "ACCCGATT", "GCCCGATT","CCCCGATT", "TCCCGATT",
-          "ATCCGATT", "GTCCGATT","CTCCGATT", "TTCCGATT",
-          "AGCCGATT", "GGCCGATT","CGCCGATT", "TGCCGATT",
-          "AATCGATT", "GATCGATT","CATCGATT", "TATCGATT",
-          "ACTCGATT", "GCTCGATT","CCTCGATT", "TCTCGATT",
-          "ATTCGATT", "GTTCGATT","CTTCGATT", "TTTCGATT",
-          "AGTCGATT", "GGTCGATT","CGTCGATT", "TGTCGATT",
-          "AAGCGATT", "GAGCGATT","CAGCGATT", "TAGCGATT",
-          "ACGCGATT", "GCGCGATT","CCGCGATT", "TCGCGATT",
-          "ATGCGATT", "GTGCGATT","CTGCGATT", "TTGCGATT",
-          "AGGCGATT", "GGGCGATT","CGGCGATT", "TGGCGATT",
-          "AAATGATT", "GAATGATT","CAATGATT", "TAATGATT",
-          "ACATGATT", "GCATGATT","CCATGATT", "TCATGATT",
-          "ATATGATT", "GTATGATT","CTATGATT", "TTATGATT",
-          "AGATGATT", "GGATGATT","CGATGATT", "TGATGATT",
-          "AACTGATT", "GACTGATT","CACTGATT", "TACTGATT",
-          "ACCTGATT", "GCCTGATT","CCCTGATT", "TCCTGATT",
-          "ATCTGATT", "GTCTGATT","CTCTGATT", "TTCTGATT",
-          "AGCTGATT", "GGCTGATT","CGCTGATT", "TGCTGATT",
-          "AATTGATT", "GATTGATT","CATTGATT", "TATTGATT",
-          "ACTTGATT", "GCTTGATT","CCTTGATT", "TCTTGATT",
-          "ATTTGATT", "GTTTGATT","CTTTGATT", "TTTTGATT",
-          "AGTTGATT", "GGTTGATT","CGTTGATT", "TGTTGATT",
-          "AAGTGATT", "GAGTGATT","CAGTGATT", "TAGTGATT",
-          "ACGTGATT", "GCGTGATT","CCGTGATT", "TCGTGATT",
-          "ATGTGATT", "GTGTGATT","CTGTGATT", "TTGTGATT",
-          "AGGTGATT", "GGGTGATT","CGGTGATT", "TGGTGATT",
-          "AAAGGATT", "GAAGGATT","CAAGGATT", "TAAGGATT",
-          "ACAGGATT", "GCAGGATT","CCAGGATT", "TCAGGATT",
-          "ATAGGATT", "GTAGGATT","CTAGGATT", "TTAGGATT",
-          "AGAGGATT", "GGAGGATT","CGAGGATT", "TGAGGATT",
-          "AACGGATT", "GACGGATT","CACGGATT", "TACGGATT",
-          "ACCGGATT", "GCCGGATT","CCCGGATT", "TCCGGATT",
-          "ATCGGATT", "GTCGGATT","CTCGGATT", "TTCGGATT",
-          "AGCGGATT", "GGCGGATT","CGCGGATT", "TGCGGATT",
-          "AATGGATT", "GATGGATT","CATGGATT", "TATGGATT",
-          "ACTGGATT", "GCTGGATT","CCTGGATT", "TCTGGATT",
-          "ATTGGATT", "GTTGGATT","CTTGGATT", "TTTGGATT",
-          "AGTGGATT", "GGTGGATT","CGTGGATT", "TGTGGATT",
-          "AAGGGATT", "GAGGGATT","CAGGGATT", "TAGGGATT",
-          "ACGGGATT", "GCGGGATT","CCGGGATT", "TCGGGATT",
-          "ATGGGATT", "GTGGGATT","CTGGGATT", "TTGGGATT",
-          "AGGGGATT", "GGGGGATT","CGGGGATT", "TGGGGATT"
+          "AAAAGATT", "CAAAGATT", "TAAAGATT", "GAAAGATT",
+          "ACAAGATT", "CCAAGATT", "TCAAGATT", "GCAAGATT",
+          "ATAAGATT", "CTAAGATT", "TTAAGATT", "GTAAGATT",
+          "AGAAGATT", "CGAAGATT", "TGAAGATT", "GGAAGATT",
+          
+          "AACAGATT", "CACAGATT", "TACAGATT", "GACAGATT",
+          "ACCAGATT", "CCCAGATT", "TCCAGATT", "GCCAGATT",
+          "ATCAGATT", "CTCAGATT", "TTCAGATT", "GTCAGATT",
+          "AGCAGATT", "CGCAGATT", "TGCAGATT", "GGCAGATT",
+          
+          "AATAGATT", "CATAGATT", "TATAGATT", "GATAGATT",
+          "ACTAGATT", "CCTAGATT", "TCTAGATT", "GCTAGATT",
+          "ATTAGATT", "CTTAGATT", "TTTAGATT", "GTTAGATT",
+          "AGTAGATT", "CGTAGATT", "TGTAGATT", "GGTAGATT",
+          
+          "AAGAGATT", "CAGAGATT", "TAGAGATT", "GAGAGATT",
+          "ACGAGATT", "CCGAGATT", "TCGAGATT", "GCGAGATT",
+          "ATGAGATT", "CTGAGATT", "TTGAGATT", "GTGAGATT",
+          "AGGAGATT", "CGGAGATT", "TGGAGATT", "GGGAGATT",
+          
+          
+          "AAACGATT", "CAACGATT", "TAACGATT", "GAACGATT",
+          "ACACGATT", "CCACGATT", "TCACGATT", "GCACGATT",
+          "ATACGATT", "CTACGATT", "TTACGATT", "GTACGATT",
+          "AGACGATT", "CGACGATT", "TGACGATT", "GGACGATT",
+          
+          "AACCGATT", "CACCGATT", "TACCGATT", "GACCGATT",
+          "ACCCGATT", "CCCCGATT", "TCCCGATT", "GCCCGATT",
+          "ATCCGATT", "CTCCGATT", "TTCCGATT", "GTCCGATT",
+          "AGCCGATT", "CGCCGATT", "TGCCGATT", "GGCCGATT",
+          
+          "AATCGATT", "CATCGATT", "TATCGATT", "GATCGATT",
+          "ACTCGATT", "CCTCGATT", "TCTCGATT", "GCTCGATT",
+          "ATTCGATT", "CTTCGATT", "TTTCGATT", "GTTCGATT",
+          "AGTCGATT", "CGTCGATT", "TGTCGATT", "GGTCGATT",
+          
+          "AAGCGATT", "CAGCGATT", "TAGCGATT", "GAGCGATT",
+          "ACGCGATT", "CCGCGATT", "TCGCGATT", "GCGCGATT",
+          "ATGCGATT", "CTGCGATT", "TTGCGATT", "GTGCGATT",
+          "AGGCGATT", "CGGCGATT", "TGGCGATT", "GGGCGATT",
+          
+          
+          "AAATGATT", "CAATGATT", "TAATGATT", "GAATGATT",
+          "ACATGATT", "CCATGATT", "TCATGATT", "GCATGATT",
+          "ATATGATT", "CTATGATT", "TTATGATT", "GTATGATT",
+          "AGATGATT", "CGATGATT", "TGATGATT", "GGATGATT",
+          
+          "AACTGATT", "CACTGATT", "TACTGATT", "GACTGATT",
+          "ACCTGATT", "CCCTGATT", "TCCTGATT", "GCCTGATT",
+          "ATCTGATT", "CTCTGATT", "TTCTGATT", "GTCTGATT",
+          "AGCTGATT", "CGCTGATT", "TGCTGATT", "GGCTGATT",
+          
+          "AATTGATT", "CATTGATT", "TATTGATT", "GATTGATT",
+          "ACTTGATT", "CCTTGATT", "TCTTGATT", "GCTTGATT",
+          "ATTTGATT", "CTTTGATT", "TTTTGATT", "GTTTGATT",
+          "AGTTGATT", "CGTTGATT", "TGTTGATT", "GGTTGATT",
+          
+          "AAGTGATT", "CAGTGATT", "TAGTGATT", "GAGTGATT",
+          "ACGTGATT", "CCGTGATT", "TCGTGATT", "GCGTGATT",
+          "ATGTGATT", "CTGTGATT", "TTGTGATT", "GTGTGATT",
+          "AGGTGATT", "CGGTGATT", "TGGTGATT", "GGGTGATT",
+          
+          
+          "AAAGGATT", "CAAGGATT", "TAAGGATT", "GAAGGATT",
+          "ACAGGATT", "CCAGGATT", "TCAGGATT", "GCAGGATT",
+          "ATAGGATT", "CTAGGATT", "TTAGGATT", "GTAGGATT",
+          "AGAGGATT", "CGAGGATT", "TGAGGATT", "GGAGGATT",
+          
+          "AACGGATT", "CACGGATT", "TACGGATT", "GACGGATT",
+          "ACCGGATT", "CCCGGATT", "TCCGGATT", "GCCGGATT",
+          "ATCGGATT", "CTCGGATT", "TTCGGATT", "GTCGGATT",
+          "AGCGGATT", "CGCGGATT", "TGCGGATT", "GGCGGATT",
+          
+          "AATGGATT", "CATGGATT", "TATGGATT", "GATGGATT",
+          "ACTGGATT", "CCTGGATT", "TCTGGATT", "GCTGGATT",
+          "ATTGGATT", "CTTGGATT", "TTTGGATT", "GTTGGATT",
+          "AGTGGATT", "CGTGGATT", "TGTGGATT", "GGTGGATT",
+          
+          "AAGGGATT", "CAGGGATT", "TAGGGATT", "GAGGGATT",
+          "ACGGGATT", "CCGGGATT", "TCGGGATT", "GCGGGATT",
+          "ATGGGATT", "CTGGGATT", "TTGGGATT", "GTGGGATT",
+          "AGGGGATT", "CGGGGATT", "TGGGGATT", "GGGGGATT"
+          ],
+  	# Streptococcus thermophilus (ST)	=> NNAGAAW
+    "ST"  =>   [
+          "AAAGAAA", "CAAGAAA", "TAAGAAA", "GAAGAAA",
+          "ACAGAAA", "CCAGAAA", "TCAGAAA", "GCAGAAA",
+          "ATAGAAA", "CTAGAAA", "TTAGAAA", "GTAGAAA",
+          "AGAGAAA", "CGAGAAA", "TGAGAAA", "GGAGAAA",
+          
+          "AAAGAAT", "CAAGAAT", "TAAGAAT", "GAAGAAT",
+          "ACAGAAT", "CCAGAAT", "TCAGAAT", "GCAGAAT",
+          "ATAGAAT", "CTAGAAT", "TTAGAAT", "GTAGAAT",
+          "AGAGAAT", "CGAGAAT", "TGAGAAT", "GGAGAAT"
+          ],
+  	# Treponema denticola (TD)	=> NAAAAC
+    "TD"  =>   [
+          "AAAAAC", "CAAAAC", "TAAAAC", "GAAAAC"
           ],
        );
   # Process the sGRNA file in to array of guides (already rev complemented)
