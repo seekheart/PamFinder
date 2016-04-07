@@ -7,8 +7,7 @@ use Bio::DB::EUtilities;
 use Bio::SeqIO;
 use feature qw(say);
 
-
-#Make the options
+# Make the options
 my $infile;
 my $outfile;
 my $email;
@@ -24,18 +23,18 @@ Usage:
 ";
 
 GetOptions(
-                    "infile=s"          =>          \$infile,
-                    "email=s"         =>           \$email,
-                    "outfile=s"             =>           \$outfile,
-                      help                =>          sub{pod2usage($usage);},
-                    );
+    "infile=s"    =>    \$infile,
+    "email=s"     =>    \$email,
+    "outfile=s"   =>    \$outfile,
+    help          =>    sub{pod2usage($usage);},
+);
 
-#check required options are met
+# check required options are met
 unless($infile && $email && $outfile){
     die "$usage";
 }
 
-#Make output directory
+# Make output directory
 my $currentDir = `pwd`;
 chomp $currentDir;
 my $dirName = $currentDir . "/output";
@@ -43,7 +42,7 @@ unless (-e $dirName){
     `mkdir -p $dirName`;
 }
 
-#Process and extract out the RefSEq IDs
+# Process and extract out the RefSEq IDs
 open(my $fh, '<', $infile) or die "Invalid File!";
 my @ids = ();
 while (<$fh>){
@@ -54,17 +53,17 @@ while (<$fh>){
 }
 close($fh);
 
-#Make a factory to fetch fastas
+# Make a factory to fetch fastas
 foreach my $id (@ids){
     my $factory = Bio::DB::EUtilities->new(
-                                                                    -eutil    =>  'efetch',
-                                                                    -rettype => 'fasta',
-                                                                    -db       =>  'nucleotide',
-                                                                    -id        =>   $id,
-                                                                    -email   =>  $email,
-                                                                    -tool      =>   'get_refseq_id'
-                                                                    );
-    #output file to directory
+        -eutil      =>      'efetch',
+        -rettype    =>      'fasta',
+        -db         =>      'nucleotide',
+        -id         =>      $id,
+        -email      =>      $email,
+        -tool       =>      'get_refseq_id'
+    );
+    # Output file to directory
     my $file = $dirName . '/' . $outfile . '.' . $id . '.fasta';
     if (-s $file){
         say STDERR "File Exists Skipping...";
