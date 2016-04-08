@@ -2,10 +2,6 @@
 use warnings;
 use strict;
 use Getopt::Long;
-use Pod::Usage;
-use Bio::DB::EUtilities;
-use Bio::SeqIO;
-use feature qw(say);
 
 # Make the options
 my $infile;
@@ -34,14 +30,10 @@ unless($infile && $outfile){
 # Process out the full guide sequence
 open(my $fileHandle, '<', $infile) or die "Invalid File!";
 my $guide = "";
-my $header = "";
 while (<$fileHandle>){
     chomp;
     if ($_ =~ m/^([^>].*)/){
         $guide = $guide . $1;
-    }
-    else {
-        $header = $_;
     }
 }
 close ($fileHandle);
@@ -100,7 +92,6 @@ if ($option3 == 1)
 }
 # Write rearranged guide to new file
 open($fileHandle, '>', $outfile) or die "Invalid File!";
-print $fileHandle $header, "\n";
 my $windowEnd = $guideLength - $remainder;
 my $windowStart;
 my $line;
