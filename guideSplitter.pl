@@ -48,48 +48,68 @@ my $option1 = 0;
 my $option2 = 0;
 my $option3 = 1;
 my $remainder = -1;
-while($stepSize > 13)
+
+# In the case that the guide is already within the correct boundaries, there is no need to
+# readjust; only to copy the string to a new file.
+if ($guideLength <= 20 && $guideLength >= 14)
 {
-    $remainder = $guideLength % $stepSize;
-    if ($remainder == 0 || $remainder > 13)
-    {
-        $option1 = 1;
-        $option3 = 0;
-        last;
-    }
-    elsif ($remainder + $stepSize >=14 && $remainder + $stepSize <= 20)
-    {
-        $option2 = 1;
-        $option3 = 0;
-        last;
-    }       
-    else
-    {
-        $stepSize--;
-    }
+    $stepSize = $guideLength;
+    $remainder = 0;
 }
-# If string needs to be cut, find the permutation with least to remove
-if ($option3 == 1)
+elsif ($guideLength < 14)
 {
-    $stepSize = 20;
-    my $minStep = $stepSize;
-    my $minRemainder = $guideLength % $stepSize;
-    while ($stepSize > 13)
+    print "********ERROR: GUIDE STRING IS TOO SHORT************************\n";
+    print "********ERROR: PLEASE RE-RUN WITH DIFFERENT GUIDE STRING********\n";
+    $stepSize = $guideLength;
+    $remainder = $guideLength;
+}
+else
+{
+    while($stepSize > 13)
     {
-        $stepSize = $stepSize - 1;
-        if ($guideLength % $stepSize < $minRemainder)
+        $remainder = $guideLength % $stepSize;
+        if ($remainder == 0 || $remainder > 13)
         {
-            $minStep = $stepSize;
-            $minRemainder = $guideLength % $stepSize;
+            $option1 = 1;
+            $option3 = 0;
+            last;
+        }
+        elsif ($remainder + $stepSize >=14 && $remainder + $stepSize <= 20)
+        {
+            $option2 = 1;
+            $option3 = 0;
+            last;
+        }       
+        else
+        {
+            $stepSize--;
         }
     }
-    # Readjust the length of the guide rena
-    $guide = substr($guide, 0, -1*$minRemainder);
-    $guideLength = length($guide);
-    $remainder = $minRemainder;
-    $option1 = 1;
-    $option3 = 0;
+
+    # If string needs to be cut, find the permutation with least to remove
+    if ($option3 == 1)
+    {
+        $stepSize = 20;
+        my $minStep = $stepSize;
+        my $minRemainder = $guideLength % $stepSize;
+        while ($stepSize > 13)
+        {
+            $stepSize = $stepSize - 1;
+            if ($guideLength % $stepSize < $minRemainder)
+            {
+                $minStep = $stepSize;
+                $minRemainder = $guideLength % $stepSize;
+            }
+        }
+        # Readjust the length of the guide rena
+        $guide = substr($guide, 0, -1*$minRemainder);
+        $guideLength = length($guide);
+        $remainder = $minRemainder;
+        $option1 = 1;
+        $option3 = 0;
+    }
 }
+
 # Write rearranged guide to new file
 open($fileHandle, '>', $outfile) or die "Invalid File!";
 my $windowEnd = $guideLength - $remainder;

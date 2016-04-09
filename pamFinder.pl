@@ -41,7 +41,7 @@ unless($fastaFile and $strain and $guideFile and $outfile){
 }
 
 ################################################################################
-# Subroutines Here:
+# Strain Hash
 ################################################################################
 
 # Setup hashes

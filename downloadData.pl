@@ -11,22 +11,25 @@ use feature qw(say);
 my $infile;
 my $outfile;
 my $email;
+my $location;
 my $usage = "\n$0\n
 
 Usage:
--infile           Input File with Genbank/RefSeq Ids
--email            Your Email
--outfile          Output Base File Name
--verbose          Display output, off by default
--help             Display This
+    -infile         Input File with Genbank/RefSeq Ids
+    -email          Your Email
+    -outfile        Output Base File Name
+    -location       Folder name for all outputs
+    -verbose        Display output, off by default
+    -help           Display This
 
 ";
 
 GetOptions(
-    "infile=s"    =>    \$infile,
-    "email=s"     =>    \$email,
-    "outfile=s"   =>    \$outfile,
-    help          =>    sub{pod2usage($usage);},
+    "infile=s"      =>      \$infile,
+    "email=s"       =>      \$email,
+    "outfile=s"     =>      \$outfile,
+    "location=s"    =>      \$location,
+    help            =>      sub{pod2usage($usage);},
 );
 
 # check required options are met
@@ -37,7 +40,7 @@ unless($infile && $email && $outfile){
 # Make output directory
 my $currentDir = `pwd`;
 chomp $currentDir;
-my $dirName = $currentDir . "/output";
+my $dirName = $currentDir . "/" . $location;
 unless (-e $dirName){
     `mkdir -p $dirName`;
 }
