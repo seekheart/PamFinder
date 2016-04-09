@@ -1,0 +1,7 @@
+Name    RefSeq ID	Length (bp)
+Escherichia coli O157:H7 str. Sakai	NC_002695.1	5500000
+Escherichia coli UMN026	NC_011751.1	5200000
+Escherichia coli 1A139	NC_011750.1	5130000
+Escherichia coli str. K-12 substr. MG1655	NC_000913.3	4640000
+Escherichia coli O83:H1 str. NRG 857C	NC_017634.1	4750000
+Escherichia coli O104:H4 str. 2011C-2493	NC_018658.1	5270000
