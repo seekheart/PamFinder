@@ -42,7 +42,7 @@ my $currentDir = `pwd`;
 chomp $currentDir;
 my $dirName = $currentDir . "/" . $location;
 unless (-e $dirName){
-    `mkdir -p $dirName`;
+    `mkdir -p $location`;
 }
 
 # Process and extract out the RefSEq IDs

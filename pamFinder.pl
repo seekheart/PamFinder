@@ -52,12 +52,16 @@ my %cas9Variants = (
     # and EQR var (NGAG)), NGNG (VQR var)
     "SP"  =>   [
         "AGG", "CGG", "TGG", "GGG",
+        
         "AAG", "CAG", "TAG", "GAG",
+        
         "AGCG", "CGCG", "TGCG", "GGCG",
+        
         "AGAA", "CGAA", "TGAA", "GGAA",
         "AGAC", "CGAC", "TGAC", "GGAC",
         "AGAT", "CGAT", "TGAT", "GGAT",
         "AGAG", "CGAG", "TGAG", "GGAG",
+        
         "AGTG", "CGTG", "TGTG", "GGTG",
         "AGGG", "CGGG", "TGGG", "GGGG"
     ],
